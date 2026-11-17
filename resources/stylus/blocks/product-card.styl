@@ -1,0 +1,163 @@
+// Catalog card shared by the home grid and the related-products rail.
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--ds-line);
+  border-radius: $radius;
+  background: var(--ds-surface);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--ds-line-strong);
+    box-shadow: 0 24px 48px -24px unquote("rgb(var(--ds-shadow) / 0.35)");
+  }
+
+  &:focus-within {
+    border-color: var(--ds-link);
+  }
+
+  &__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--ds-soft);
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+
+    [data-theme="dark"] & {
+      filter: brightness(0.85) saturate(0.7);
+    }
+  }
+
+  &:hover &__image {
+    transform: scale(1.03);
+  }
+
+  &__badges {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+  }
+
+  &__eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ds-link);
+  }
+
+  &__title {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  // Stretched link: the whole card is clickable with a single tab stop.
+  &__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  &__link:focus-visible {
+    outline: none;
+  }
+
+  &__meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 12px;
+    font-size: 14px;
+  }
+
+  &__meta-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ds-muted);
+  }
+
+  &__meta-value {
+    font-weight: 500;
+    text-align: right;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--ds-line);
+  }
+
+  &__vat {
+    font-size: 12px;
+    color: var(--ds-muted);
+  }
+
+  &__actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__details {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ds-link);
+
+    +above($bp-sm) {
+      display: inline-flex;
+    }
+  }
+
+  &__cart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: $radius;
+    background: var(--ds-primary);
+    color: var(--ds-on-primary);
+    transition: background-color 0.15s;
+
+    &:hover {
+      background: var(--ds-primary-hover);
+    }
+
+    &--added {
+      background: var(--ds-strong);
+      color: #ffffff;
+    }
+  }
+}

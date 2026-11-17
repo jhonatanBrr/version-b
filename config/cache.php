@@ -15,7 +15,8 @@ return [
     |
     */
 
-    'default' => env('CACHE_STORE', 'database'),
+    // No database in this project: cache always lives in files.
+    'default' => 'file',
 
     /*
     |--------------------------------------------------------------------------

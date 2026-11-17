@@ -18,7 +18,8 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'database'),
+    // No database in this project: sessions always live in files.
+    'driver' => 'file',
 
     /*
     |--------------------------------------------------------------------------

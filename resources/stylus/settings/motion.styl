@@ -1,0 +1,88 @@
+/*
+ * Motion tokens — the only place where animations are defined.
+ *   .ds-enter / .ds-enter-scale  entrance on first paint (CSS only)
+ *   .ds-delay-1 … .ds-delay-5    stagger steps (or set --ds-delay inline)
+ *   .ds-reveal, .ds-reveal-children  fade-up while scrolling into view
+ *   .ds-pop                      confirmation pop (re-insert the element to replay)
+ *   .ds-pulse                    soft highlight when a value changes
+ * Everything is disabled for users who prefer reduced motion.
+ */
+
+$ease-out = cubic-bezier(0.2, 0.8, 0.2, 1)
+
+@keyframes ds-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes ds-scale-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes ds-pop {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes ds-pulse {
+  0% { background-color: unquote("color-mix(in srgb, var(--ds-accent) 22%, transparent)"); }
+  100% { background-color: transparent; }
+}
+
+.ds-enter {
+  animation: ds-fade-up 700ms $ease-out both;
+  animation-delay: var(--ds-delay, 0ms);
+}
+
+.ds-enter-scale {
+  animation: ds-scale-in 800ms $ease-out both;
+  animation-delay: var(--ds-delay, 0ms);
+}
+
+for $i in 1..5
+  .ds-delay-{$i}
+    --ds-delay: ($i * 80)ms
+
+.ds-pop {
+  animation: ds-pop 350ms $ease-out both;
+}
+
+.ds-pulse {
+  border-radius: $radius;
+  animation: ds-pulse 900ms ease-out both;
+}
+
+@supports (animation-timeline: view()) {
+  .ds-reveal,
+  .ds-reveal-children > * {
+    animation: ds-fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-enter,
+  .ds-enter-scale,
+  .ds-pop,
+  .ds-pulse,
+  .ds-reveal,
+  .ds-reveal-children > * {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Theme switch: circular reveal driven by the View Transitions API.
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

@@ -1,0 +1,16 @@
+// Mobile first: 375px base, tablet from 768px, desktop from 1280px.
+$bp-sm = 640px
+$bp-md = 768px
+$bp-lg = 1024px
+$bp-xl = 1280px
+
+$container-max = 1280px
+
+// Usage: +above($bp-md) { … }
+above($bp)
+  @media (min-width: $bp)
+    {block}
+
+below($bp)
+  @media (max-width: ($bp - 1px))
+    {block}

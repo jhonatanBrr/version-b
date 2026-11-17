@@ -1,0 +1,79 @@
+/*
+ * Design tokens — the ONLY place where colors live.
+ *
+ * 1. Brand palette: the four identity colors from the brief.
+ * 2. Semantic tokens (CSS custom properties) that blocks consume, for the
+ *    light and the dark theme. Changing a brand color re-colors the site.
+ */
+
+// 1. Brand palette
+$brand-primary    = #1B4F8A
+$brand-text       = #0F2D52
+$brand-accent     = #0EA5E9
+$brand-background = #EFF6FF
+
+// Shape
+$radius = 6px
+
+// 2. Semantic tokens
+:root {
+  --brand-primary: $brand-primary;
+  --brand-text: $brand-text;
+  --brand-accent: $brand-accent;
+  --brand-background: $brand-background;
+
+  --ds-bg: #ffffff;
+  --ds-surface: #ffffff;
+  --ds-soft: var(--brand-background);
+  --ds-soft-2: #f6f9fd;
+  --ds-soft-hover: #dcebfb;
+  --ds-strong: var(--brand-text);
+  --ds-ink: var(--brand-text);
+  --ds-muted: #3b5372;
+  --ds-line: #dae4e9;
+  --ds-line-strong: #9cb8d6;
+  --ds-link: var(--brand-primary);
+  --ds-primary: var(--brand-primary);
+  --ds-primary-hover: var(--brand-text);
+  --ds-on-primary: #ffffff;
+  --ds-accent: var(--brand-accent);
+  --ds-focus: var(--brand-accent);
+  --ds-danger: #c0322b;
+  --ds-paper: #ffffff;
+  --ds-paper-ink: var(--brand-text);
+  --ds-shadow: 15 45 82;
+
+  // Illustration accents (sticky notes in empty states)
+  --ds-note: #fde68a;
+  --ds-note-strong: #fcd34d;
+  --ds-note-ink: #92400e;
+
+  // Format badge dots
+  --ds-format-cartaceo: var(--brand-primary);
+  --ds-format-digitale: var(--brand-accent);
+  --ds-format-corso-online: #7dd3fc;
+  --ds-format-in-presenza: var(--brand-text);
+
+  color-scheme: light;
+}
+
+// Dark theme: neutral blue-greys with a single accent for hierarchy.
+[data-theme="dark"] {
+  --ds-bg: #0b0f14;
+  --ds-surface: #11161d;
+  --ds-soft: #161c24;
+  --ds-soft-2: #141a22;
+  --ds-soft-hover: #1c2430;
+  --ds-strong: #1a212b;
+  --ds-ink: #ecf1f7;
+  --ds-muted: #8e9bad;
+  --ds-line: #232b36;
+  --ds-line-strong: #344050;
+  --ds-link: #8cc4f2;
+  --ds-primary-hover: #2a65a8;
+  --ds-accent: #8cc4f2;
+  --ds-danger: #f28b82;
+  --ds-shadow: 0 0 0;
+
+  color-scheme: dark;
+}
