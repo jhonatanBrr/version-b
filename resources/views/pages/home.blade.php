@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('title', __('home.meta.title'))
+@section('description', __('home.meta.description'))
+
 @section('content')
-    <div data-page="home" class="container" style="padding:48px 0">home</div>
+    <div class="home" data-page="home">
+        @include('sections.home.hero', ['featured' => $featured, 'productCount' => count($products)])
+        @include('sections.home.catalog')
+        @include('sections.home.contact')
+    </div>
 @endsection
