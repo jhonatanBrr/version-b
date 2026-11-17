@@ -7,7 +7,10 @@ const mix = require('laravel-mix');
  */
 mix.js('resources/js/app.js', 'public/js')
     .stylus('resources/stylus/app.styl', 'public/css')
-    .autoload({ jquery: ['$', 'jQuery', 'window.jQuery'] })
+    // jQuery 4 ships an ESM build: provide its default export, not the module namespace.
+    .webpackConfig((webpack) => ({
+        plugins: [new webpack.ProvidePlugin({ $: ['jquery', 'default'], jQuery: ['jquery', 'default'] })],
+    }))
     .options({ processCssUrls: false })
     .disableNotifications()
     .version();

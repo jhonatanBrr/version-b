@@ -1,6 +1,6 @@
 {{--
     Product search. Without JS it submits to the home catalog (?q=…#catalogo);
-    with JS the home grid filters live while typing (see resources/js/modules/catalog.js).
+    with JS the home grid filters live while typing (see resources/js/pages/home/catalog.js).
 --}}
 <form role="search" action="{{ route('home') }}#catalogo" method="get" class="search {{ $class ?? '' }}" data-search-form>
     <label for="{{ $id }}" class="sr-only">{{ __('common.header.searchLabel') }}</label>

@@ -66,6 +66,11 @@ button {
   outline-offset: 2px;
 }
 
+// Hide the native disclosure triangle (Safari still needs the WebKit pseudo-element).
+summary::-webkit-details-marker {
+  display: none;
+}
+
 [hidden] {
   display: none !important;
 }
