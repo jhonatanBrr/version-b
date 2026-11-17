@@ -1,0 +1,69 @@
+// Illustrated, localized 404 page.
+.not-found {
+  background: linear-gradient(to bottom, var(--ds-soft), var(--ds-bg));
+
+  &__inner {
+    display: grid;
+    align-items: center;
+    gap: 40px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+
+    +above($bp-md) {
+      grid-template-columns: 1fr 1.1fr;
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    // Illustration on the left from tablet up, text first on mobile.
+    +above($bp-md) {
+      order: 1;
+    }
+  }
+
+  &__eyebrow {
+    color: var(--ds-link);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+
+    +above($bp-sm) {
+      font-size: 48px;
+    }
+  }
+
+  &__text {
+    max-width: 448px;
+    color: var(--ds-muted);
+    font-size: 18px;
+    line-height: 1.625;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  &__illustration {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    margin: 0 auto;
+  }
+}

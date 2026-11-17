@@ -1,0 +1,93 @@
+// "In arrivo" page for links that are out of scope: text + illustration.
+.coming-soon {
+  background: linear-gradient(to bottom, var(--ds-soft), var(--ds-bg));
+
+  &__inner {
+    display: grid;
+    align-items: center;
+    gap: 40px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+
+    +above($bp-md) {
+      grid-template-columns: 1fr 1.1fr;
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: $radius;
+    background: var(--ds-surface);
+    color: var(--ds-link);
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ds-accent);
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+
+    +above($bp-sm) {
+      font-size: 48px;
+    }
+  }
+
+  &__text {
+    max-width: 448px;
+    color: var(--ds-muted);
+    font-size: 18px;
+    line-height: 1.625;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__check {
+    color: var(--ds-link);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  &__illustration {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    margin: 0 auto;
+  }
+}
