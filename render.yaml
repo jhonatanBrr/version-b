@@ -1,0 +1,19 @@
+# Render Blueprint: New → Blueprint → select this repository.
+services:
+  - type: web
+    name: giunti-catalog-laravel
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /up
+    envVars:
+      - key: APP_NAME
+        value: Giunti Psychometrics
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      # Set it in the dashboard with the output of `php artisan key:generate --show`.
+      # If left empty, the container generates a temporary key on each start.
+      - key: APP_KEY
+        sync: false
